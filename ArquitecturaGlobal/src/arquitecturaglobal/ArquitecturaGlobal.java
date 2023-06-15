@@ -11,9 +11,10 @@ public class ArquitecturaGlobal {
         Window window = new Window();
         window.setVisible(true);
         
-        OyenteMenu menuListener = new OyenteMenu(window);
-        menuListener.changeIcon(window.lapiz);
-        menuListener.changeIcon(window.click);
+        OyenteMenu oyente = new OyenteMenu(window);
+        window.lapiz.addMouseListener(oyente);
+        window.click.addMouseListener(oyente);
+        
     }
     
 }

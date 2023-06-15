@@ -4,82 +4,103 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-class OyenteMenu {
+class OyenteMenu implements MouseListener{
     
     private final Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
     private Color celeste = new Color(168, 218, 220);
     private Color rosa = new Color(230, 57, 70);
+
     private Window window;
+    private JLabel label;
+    
+    private Dibujo dibujo;
 
     public OyenteMenu(Window window) {
         this.window = window;
     }
-    
-    public void changeIcon(JLabel item){
-        MouseListener oyente = new MouseListener() {
-            
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                showPanel(item, window);
-            }
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                item.setBackground(celeste);
-                String ruta = "/iconos/"+item.getName()+ "Azul.png";
-                item.setIcon(new ImageIcon(getClass().getResource(ruta)));
-                item.setCursor(handCursor);
-                showFunctionality(item, true);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                item.setBackground(rosa);
-                String ruta = "/iconos/"+item.getName()+ "Celeste.png";
-                item.setIcon(new ImageIcon(getClass().getResource(ruta)));
-                showFunctionality(item, false);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-        };
+    // Se ejecuta cuando se hace clic en el JLabel
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // Obtener el JLabel fuente del evento
+        label = (JLabel) e.getSource();
         
-        item.addMouseListener(oyente);
+        window.cantClicks.setText("0");
+        mostrarPanel(window);
     }
-    
-    private void showFunctionality(JLabel item, boolean show){
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    // Se ejecuta cuando el mouse entra en el área del label
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // Obtener el JLabel fuente del evento
+        label = (JLabel) e.getSource();
+        
+        // Actualizar el fondo, icono y cursor del JLabel
+        label.setBackground(celeste);
+        String ruta = "/iconos/" + label.getName() + "Azul.png";
+        label.setIcon(new ImageIcon(getClass().getResource(ruta)));
+        label.setCursor(handCursor);
+        
+        // Mostrar el componente hover correspondiente
+        mostrarHover(label, true);
+    }
+
+    // Se ejecuta cuando el mouse sale del área del JLabel
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // Actualizar el fondo y el icono del JLabel
+        label.setBackground(rosa);
+        String ruta = "/iconos/" + label.getName() + "Celeste.png";
+        label.setIcon(new ImageIcon(getClass().getResource(ruta)));
+        // Ocultar el componente hover 
+        mostrarHover(label, false);
+    }
+
+    // Mostrar u ocultar el componente hover según el JLabel
+    private void mostrarHover(JLabel item, boolean mostrar) {
         if (item.getName().equals("lapiz")) {
-            window.lapizHover.setVisible(show);
-        }else if (item.getName().equals("click")) {
-            window.clickHover.setVisible(show);
+            window.lapizHover.setVisible(mostrar);
+        } else if (item.getName().equals("click")) {
+            window.clickHover.setVisible(mostrar);
         }
     }
-    
-    private void showPanel(JLabel item, Window window){
-        if (item.getName().equals("lapiz")) {
+
+    // Mostrar el panel correspondiente según el JLabel presionado
+    private void mostrarPanel(Window window) {
+        if (label.getName().equals("lapiz")) {
+            
+            if (dibujo != null) {
+                window.getContentPane().remove(dibujo);
+            }
+            
+            // Crear un panel Dibujo y lo agrego en la ventana
+            dibujo = new Dibujo(rosa);
+            window.getContentPane().add(dibujo);
+            
+            // Mostrar/ocultar los paneles apropiados
             window.panelDibujar.setVisible(true);
             window.panelClickear.setVisible(false);
-            OyenteMouse mouseListener = new OyenteMouse(window.panelDibujar);
-            window.cantClicks.setText("0");
             
-        }else if (item.getName().equals("click")) {
+        } else if (label.getName().equals("click")) {
+            // Mostrar/ocultar los paneles apropiados
             window.panelDibujar.setVisible(false);
             window.panelClickear.setVisible(true);
-            OyenteMouse mouseListener = new OyenteMouse(window.panelClickear);
-            mouseListener.contarClicks(window);
             
+            // Crear una instancia de OyenteClick
+            OyenteClick oyente = new OyenteClick(window);
+            window.panelClickear.addMouseListener(oyente);
         }
-        
     }
-    
+
 }

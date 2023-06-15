@@ -4,6 +4,7 @@
  */
 package arquitecturaglobal;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -15,13 +16,19 @@ public class Dibujo extends JPanel {
 
     //Listar referencias Point 
     private final ArrayList<Point> puntos = new ArrayList<>();
+    private Color color;
 
-    //establecer la gui y registra el manejador de eventos del raton
-    public Dibujo() {
-
-        addMouseMotionListener(
-                new MouseMotionAdapter() {//clase interna anonima
-            //almacena las coordenadas de arrastre y vuelve a dibujar
+    public Dibujo(Color color) {
+        
+        this.color = color;
+        
+        //Le ajusto el tamaño y ubicación
+        setBounds(100, 0, 590, 456);
+        setBackground(new Color(255,255,255));
+        
+        addMouseMotionListener(new MouseMotionAdapter() {
+            //Se llama cuando el mouse es presionado y arrastrado
+            //Almacena las coordenadas de arrastre y vuelve a dibujar
             @Override
             public void mouseDragged(MouseEvent evento) {
                 puntos.add(evento.getPoint());
@@ -29,17 +36,22 @@ public class Dibujo extends JPanel {
             }
         }
         );
-
+        
     }
 
-//dibuja ovalos en iun cuadro delimitador de 4x4 en la ubicaciones especificadas en la ventana
+    // Sobrescribimos el método paintComponent que extiende de JPanel
+    // Se llama automáticamente por el sistema de representación gráfica cuando es necesario actualizar o volver a dibujar el componente en la pantalla
+    // Dibuja ovalos en el panel en la ubicaciones especificadas en la ventana
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);//borra el area
-        //dibuja todos los puntos
-        for(Point punto : puntos)
-         //   g.fill3DRect( punto.y, punto.y,punto.x, punto.x ,true);
-       g.fillOval(punto.x, punto.y, 4, 4);
+        //Borra el area
+        super.paintComponent(g);
+        
+        //Dibuja todos los puntos
+        for(Point punto : puntos){
+            g.setColor(color);
+            g.fillOval(punto.x, punto.y, 10, 10);
+        }
     }
 }
     
