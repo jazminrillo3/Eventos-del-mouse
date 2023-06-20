@@ -4,6 +4,7 @@
  */
 package arquitecturaglobal;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 
 public class Window extends javax.swing.JFrame {
@@ -16,12 +17,15 @@ public class Window extends javax.swing.JFrame {
         this.setIconImage(icon.getImage());
         lapiz.setName("lapiz");
         click.setName("click");
+        minijuego.setName("minijuego");
         
         lapizHover.setVisible(false);
         clickHover.setVisible(false);
+        minijuegoHover.setVisible(false);
         
         panelDibujar.setVisible(false);
         panelClickear.setVisible(false);
+        panelMinijuego.setVisible(false);
     }
 
     /**
@@ -33,13 +37,25 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         background = new javax.swing.JPanel();
         lapizHover = new javax.swing.JLabel();
         clickHover = new javax.swing.JLabel();
+        minijuegoHover = new javax.swing.JLabel();
         menu = new javax.swing.JPanel();
+        minijuego = new javax.swing.JLabel();
         lapiz = new javax.swing.JLabel();
         click = new javax.swing.JLabel();
+        panelMinijuego = new javax.swing.JPanel();
+        basura = new javax.swing.JLabel();
+        panelInstrucciones = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        boton = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         panelDibujar = new javax.swing.JPanel();
         opciones = new javax.swing.JPanel();
         borrador = new javax.swing.JLabel();
@@ -50,8 +66,6 @@ public class Window extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cantClicks = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-
-        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -76,9 +90,24 @@ public class Window extends javax.swing.JFrame {
         clickHover.setOpaque(true);
         background.add(clickHover, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 120, 20));
 
+        minijuegoHover.setBackground(new java.awt.Color(69, 123, 157));
+        minijuegoHover.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        minijuegoHover.setForeground(new java.awt.Color(29, 53, 87));
+        minijuegoHover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minijuegoHover.setText("Minijuego");
+        minijuegoHover.setOpaque(true);
+        background.add(minijuegoHover, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 120, 20));
+
         menu.setBackground(new java.awt.Color(230, 57, 70));
         menu.setMinimumSize(new java.awt.Dimension(70, 130));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        minijuego.setBackground(new java.awt.Color(230, 57, 70));
+        minijuego.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minijuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/minijuegoCeleste.png"))); // NOI18N
+        minijuego.setToolTipText("");
+        minijuego.setOpaque(true);
+        menu.add(minijuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 70, 70));
 
         lapiz.setBackground(new java.awt.Color(230, 57, 70));
         lapiz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,13 +119,145 @@ public class Window extends javax.swing.JFrame {
         click.setBackground(new java.awt.Color(230, 57, 70));
         click.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         click.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/clickCeleste.png"))); // NOI18N
-        click.setText(" ");
+        click.setText("  ");
         click.setToolTipText("");
         click.setOpaque(true);
         menu.add(click, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 70, 70));
         click.getAccessibleContext().setAccessibleName("click");
 
         background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 456));
+
+        panelMinijuego.setBackground(new java.awt.Color(255, 255, 255));
+        panelMinijuego.setMinimumSize(new java.awt.Dimension(70, 130));
+
+        basura.setForeground(new java.awt.Color(168, 218, 220));
+        basura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        basura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/basura.png"))); // NOI18N
+
+        panelInstrucciones.setBackground(new java.awt.Color(29, 53, 87));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("¿Cómo jugar?");
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Si aparece un mosquito o una araña, debes aplastarlos con el click.");
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Si aparece una banana o una manzana, debes arrastrarla hasta la basura.");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/banana.png"))); // NOI18N
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/mosquito.png"))); // NOI18N
+
+        boton.setBackground(new java.awt.Color(230, 57, 70));
+        boton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        boton.setForeground(new java.awt.Color(255, 255, 255));
+        boton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boton.setText("OK!");
+        boton.setOpaque(true);
+        boton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonMouseExited(evt);
+            }
+        });
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/manzana.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/arana.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelInstruccionesLayout = new javax.swing.GroupLayout(panelInstrucciones);
+        panelInstrucciones.setLayout(panelInstruccionesLayout);
+        panelInstruccionesLayout.setHorizontalGroup(
+            panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInstruccionesLayout.createSequentialGroup()
+                .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(boton, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelInstruccionesLayout.createSequentialGroup()
+                                .addGap(192, 192, 192)
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9))
+                            .addGroup(panelInstruccionesLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel5))))
+                    .addGroup(panelInstruccionesLayout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInstruccionesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInstruccionesLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInstruccionesLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))))
+        );
+        panelInstruccionesLayout.setVerticalGroup(
+            panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInstruccionesLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(panelInstruccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(26, 26, 26)
+                .addComponent(boton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelMinijuegoLayout = new javax.swing.GroupLayout(panelMinijuego);
+        panelMinijuego.setLayout(panelMinijuegoLayout);
+        panelMinijuegoLayout.setHorizontalGroup(
+            panelMinijuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMinijuegoLayout.createSequentialGroup()
+                .addGroup(panelMinijuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMinijuegoLayout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(basura, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMinijuegoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(panelInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        panelMinijuegoLayout.setVerticalGroup(
+            panelMinijuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMinijuegoLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(panelInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133)
+                .addComponent(basura, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        background.add(panelMinijuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 590, 456));
 
         panelDibujar.setBackground(new java.awt.Color(255, 255, 255));
         panelDibujar.setMinimumSize(new java.awt.Dimension(70, 130));
@@ -173,24 +334,48 @@ public class Window extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseEntered
+        boton.setBackground(new Color(69, 123, 157));
+    }//GEN-LAST:event_botonMouseEntered
+
+    private void botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseClicked
+        panelInstrucciones.setVisible(false);
+    }//GEN-LAST:event_botonMouseClicked
+
+    private void botonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseExited
+        boton.setBackground(new Color(230,57,70));
+    }//GEN-LAST:event_botonMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel amarillo;
     public javax.swing.JLabel azul;
     public javax.swing.JPanel background;
+    public javax.swing.JLabel basura;
     public javax.swing.JLabel borrador;
+    private javax.swing.JLabel boton;
     public javax.swing.JLabel cantClicks;
     public javax.swing.JLabel click;
     public javax.swing.JLabel clickHover;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     public javax.swing.JLabel lapiz;
     public javax.swing.JLabel lapizHover;
     public javax.swing.JPanel menu;
+    public javax.swing.JLabel minijuego;
+    public javax.swing.JLabel minijuegoHover;
     public javax.swing.JPanel opciones;
     public javax.swing.JPanel panelClickear;
     public javax.swing.JPanel panelDibujar;
+    public javax.swing.JPanel panelInstrucciones;
+    public javax.swing.JPanel panelMinijuego;
     public javax.swing.JLabel rojo;
     // End of variables declaration//GEN-END:variables
 }

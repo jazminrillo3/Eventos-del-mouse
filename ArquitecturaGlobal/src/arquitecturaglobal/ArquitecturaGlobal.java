@@ -1,6 +1,7 @@
 package arquitecturaglobal;
 
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -14,6 +15,7 @@ public class ArquitecturaGlobal {
         OyenteMenu oyente = new OyenteMenu(window);
         window.lapiz.addMouseListener(oyente);
         window.click.addMouseListener(oyente);
+        window.minijuego.addMouseListener(oyente);
         
     }
     

@@ -22,7 +22,11 @@ class OyenteDibujo implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         // Obtener el JLabel fuente del evento
         label = (JLabel) e.getSource();
+        
+        //Cambio el color del pincel según el label elegido
         dibujo.setColorPincel(label.getBackground());
+        
+        //Si es el borrador, lo hago mas ancho y alto
         if (label.getBackground().equals(new Color(255,255,255))) {
             dibujo.setAncho(30);
             dibujo.setAlto(30);

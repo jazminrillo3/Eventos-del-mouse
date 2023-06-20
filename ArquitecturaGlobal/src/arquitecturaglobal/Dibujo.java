@@ -12,10 +12,11 @@ import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-public class Dibujo extends JPanel {
+public class Dibujo extends JPanel{
 
     //Listar referencias Point 
     private final ArrayList<PuntoColor> puntos = new ArrayList<>();
+    
     private Color colorPincel;
     private int alto = 10;
     private int ancho = 10;

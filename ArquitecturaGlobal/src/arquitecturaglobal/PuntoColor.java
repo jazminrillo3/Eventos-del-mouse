@@ -9,10 +9,10 @@ import java.awt.Point;
 
 public class PuntoColor {
 
-    private Point punto;
-    private Color color;
-    private int ancho;
-    private int alto;
+    private final Point punto;
+    private final Color color;
+    private final int ancho;
+    private final int alto;
 
     public PuntoColor(Point punto, Color color, int ancho, int alto) {
         this.punto = punto;
@@ -37,6 +37,4 @@ public class PuntoColor {
         return alto;
     }
     
-    
-
 }
