@@ -85,12 +85,22 @@ class OyenteMenu implements MouseListener{
             }
             
             // Crear un panel Dibujo y lo agrego en la ventana
-            dibujo = new Dibujo(rosa);
+            dibujo = new Dibujo(window);
+            
+            //Agrego un oyente para el menú del dibujo 
+            Color colorPincel = new Color(0,0,0);
+            OyenteDibujo oyente = new OyenteDibujo(dibujo);
+            window.borrador.addMouseListener(oyente);
+            window.amarillo.addMouseListener(oyente);
+            window.azul.addMouseListener(oyente);
+            window.rojo.addMouseListener(oyente);
+            
             window.getContentPane().add(dibujo);
             
             // Mostrar/ocultar los paneles apropiados
             window.panelDibujar.setVisible(true);
             window.panelClickear.setVisible(false);
+            
             
         } else if (label.getName().equals("click")) {
             // Mostrar/ocultar los paneles apropiados
