@@ -40,16 +40,16 @@ public class Window extends javax.swing.JFrame {
         menu = new javax.swing.JPanel();
         lapiz = new javax.swing.JLabel();
         click = new javax.swing.JLabel();
-        panelClickear = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        cantClicks = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         panelDibujar = new javax.swing.JPanel();
         opciones = new javax.swing.JPanel();
         borrador = new javax.swing.JLabel();
         azul = new javax.swing.JLabel();
         rojo = new javax.swing.JLabel();
         amarillo = new javax.swing.JLabel();
+        panelClickear = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cantClicks = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -98,6 +98,41 @@ public class Window extends javax.swing.JFrame {
 
         background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 456));
 
+        panelDibujar.setBackground(new java.awt.Color(255, 255, 255));
+        panelDibujar.setMinimumSize(new java.awt.Dimension(70, 130));
+        panelDibujar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        opciones.setBackground(new java.awt.Color(69, 123, 157));
+        opciones.setMinimumSize(new java.awt.Dimension(70, 130));
+        opciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        borrador.setBackground(new java.awt.Color(255, 255, 255));
+        borrador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        borrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrador.png"))); // NOI18N
+        opciones.add(borrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 40, 30));
+
+        azul.setBackground(new java.awt.Color(0, 0, 204));
+        azul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        azul.setOpaque(true);
+        opciones.add(azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 20, 20));
+
+        rojo.setBackground(new java.awt.Color(255, 0, 0));
+        rojo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rojo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        rojo.setOpaque(true);
+        opciones.add(rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 20, 20));
+
+        amarillo.setBackground(new java.awt.Color(255, 255, 51));
+        amarillo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        amarillo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        amarillo.setOpaque(true);
+        opciones.add(amarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 20, 20));
+
+        panelDibujar.add(opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 456));
+
+        background.add(panelDibujar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 590, 456));
+
         panelClickear.setBackground(new java.awt.Color(255, 255, 255));
         panelClickear.setMinimumSize(new java.awt.Dimension(70, 130));
         panelClickear.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,40 +159,6 @@ public class Window extends javax.swing.JFrame {
 
         background.add(panelClickear, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 590, 456));
 
-        panelDibujar.setBackground(new java.awt.Color(255, 255, 255));
-        panelDibujar.setMinimumSize(new java.awt.Dimension(70, 130));
-        panelDibujar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        opciones.setBackground(new java.awt.Color(69, 123, 157));
-        opciones.setMinimumSize(new java.awt.Dimension(70, 130));
-        opciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        borrador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        borrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrador.png"))); // NOI18N
-        opciones.add(borrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 40, 30));
-
-        azul.setBackground(new java.awt.Color(0, 0, 204));
-        azul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        azul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        azul.setOpaque(true);
-        opciones.add(azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 20, 20));
-
-        rojo.setBackground(new java.awt.Color(255, 0, 0));
-        rojo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rojo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        rojo.setOpaque(true);
-        opciones.add(rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 20, 20));
-
-        amarillo.setBackground(new java.awt.Color(255, 255, 51));
-        amarillo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        amarillo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        amarillo.setOpaque(true);
-        opciones.add(amarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 20, 20));
-
-        panelDibujar.add(opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 456));
-
-        background.add(panelDibujar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 590, 456));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,10 +175,10 @@ public class Window extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel amarillo;
-    private javax.swing.JLabel azul;
+    public javax.swing.JLabel amarillo;
+    public javax.swing.JLabel azul;
     public javax.swing.JPanel background;
-    private javax.swing.JLabel borrador;
+    public javax.swing.JLabel borrador;
     public javax.swing.JLabel cantClicks;
     public javax.swing.JLabel click;
     public javax.swing.JLabel clickHover;
@@ -190,6 +191,6 @@ public class Window extends javax.swing.JFrame {
     public javax.swing.JPanel opciones;
     public javax.swing.JPanel panelClickear;
     public javax.swing.JPanel panelDibujar;
-    private javax.swing.JLabel rojo;
+    public javax.swing.JLabel rojo;
     // End of variables declaration//GEN-END:variables
 }
