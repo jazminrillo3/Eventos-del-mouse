@@ -3,15 +3,24 @@ Este proyecto forma parte del global de Arquitectura y Sistemas Operativos de la
 
 # Características
 • La aplicación posee una interfaz gráfica intuitiva.
+
 • Permite realizar acciones como clics, desplazamientos y entradas de mouse.
+
 • Los eventos del mouse son capturados y mostrados en tiempo real en la interfaz.
+
 • Se puede dibujar en la interfaz utilizando el mouse.
+
 • Incluye un panel con un contador de clics.
+
 • Tiene un juego interactivo que utiliza los eventos del mouse.
 
 # Instrucciones de instalación
 Clona el repositorio:
+
 git clone https://github.com/jazminrillo3/Eventos-del-mouse.git
+
 Abre el proyecto en tu IDE.
+
 Compila el proyecto y asegúrate de que no haya errores.
+
 Ejecuta la aplicación y explora los diferentes eventos del mouse, prueba el dibujo y los juegos interactivos.
