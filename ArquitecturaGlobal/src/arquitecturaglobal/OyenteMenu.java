@@ -17,6 +17,7 @@ class OyenteMenu implements MouseListener{
     private JLabel label;
     
     private Dibujo dibujo;
+    private OyenteMinijuego oyenteMinijuego;
 
     public OyenteMenu(Window window) {
         this.window = window;
@@ -123,6 +124,7 @@ class OyenteMenu implements MouseListener{
                 }
                 
                 oyenteMinijuego = new OyenteMinijuego(window);
+                
                 break;
         }
     }

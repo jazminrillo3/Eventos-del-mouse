@@ -1,18 +1,16 @@
 package arquitecturaglobal;
 
 import java.awt.Color;
-import java.awt.Point;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import javax.swing.JPanel;
 
 public class OyenteClick implements MouseListener{
     
     private int clicks=1;
-    private Color celeste = new Color(168, 218, 220);
+    private final Color celeste = new Color(168, 218, 220);
     
-    private Window window;
+    private final Window window;
 
     public OyenteClick(Window window) {
         this.window = window;
@@ -37,10 +35,12 @@ public class OyenteClick implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        window.panelClickear.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        window.panelClickear.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
 }
