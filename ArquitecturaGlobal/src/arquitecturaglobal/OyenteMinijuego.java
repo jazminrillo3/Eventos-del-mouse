@@ -10,45 +10,50 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class OyenteMinijuego implements MouseListener{
+public class OyenteMinijuego implements MouseListener, MouseMotionListener{
     
     private Window window;
     private JLabel imagen;
     
-    private boolean arrastra = false;
-    private boolean presiona = false;
-    private int desdeX;
-    private int desdeY;
-    
     private final Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
-    private Icon iconoMosquito = new ImageIcon(getClass().getResource("/iconos/mosquito.png"));
-    private Icon iconoArana = new ImageIcon(getClass().getResource("/iconos/arana.png"));
-    private Icon iconoBanana = new ImageIcon(getClass().getResource("/iconos/banana.png"));
-    private Icon iconoManzana = new ImageIcon(getClass().getResource("/iconos/manzana.png"));
+    private final Icon iconoMosquito = new ImageIcon(getClass().getResource("/iconos/mosquito.png"));
+    private final Icon iconoArana = new ImageIcon(getClass().getResource("/iconos/arana.png"));
+    private final Icon iconoBanana = new ImageIcon(getClass().getResource("/iconos/banana.png"));
+    private final Icon iconoManzana = new ImageIcon(getClass().getResource("/iconos/manzana.png"));
     
     public OyenteMinijuego(Window window) {
         this.window = window;
+        
         imagen = new JLabel();
         window.panelMinijuego.repaint();
         
-        agregarImagen();
+        imagen.addMouseListener(this);
+        imagen.addMouseMotionListener(this);
+        
+        aparecerImagen();
     }
 
     public JLabel getImagen() {
         return imagen;
     }
     
-    public void agregarImagen(){
+    public void aparecerImagen(){
         // Eliminar la imagen anterior si existe
         if (imagen != null) {
             window.panelMinijuego.remove(imagen);
         }
-        // Generar una posición aleatoria para la nueva imagen
-        int x = (int) (Math.random() * (560 - 0 + 1));
-        int y = (int) (Math.random() * (400 - 70 + 1)) + 70;
         
-        // Generar un número aleatorio entre 0 y 4
-        int numero = (int) (Math.random() * 5);
+        // Generar una posición aleatoria para la nueva imagen
+        // Verificar que la x e y no caigan donde está el tacho de basura
+        int x,y;
+        do {
+            x = (int) (Math.random() * (560 - 0 + 1));
+            y = (int) (Math.random() * (400 - 70 + 1)) + 70;
+        } while (window.basura.getBounds().contains(new Point(x,y)));
+        // getBounds() devuelve un objeto Rectangle que representa el rectángulo delimitador del componente en relación con su contenedor
+        
+        // Generar un número aleatorio entre 0 y 3
+        int numero = (int) (Math.random() * 4);
         // Configurar la imagen y asignarle el nombre segun el numero obtenido
         switch (numero) {
             case 0:
@@ -77,9 +82,10 @@ public class OyenteMinijuego implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        //Si se clickeó una imagen con un bicho, genero otra
         JLabel clickeado = (JLabel) e.getSource();
         if (clickeado.getName().equals("bicho")) {
-            agregarImagen();
+            aparecerImagen();
         }
     }
 
@@ -87,29 +93,24 @@ public class OyenteMinijuego implements MouseListener{
     public void mousePressed(MouseEvent e) {
         JLabel presionado = (JLabel) e.getSource();
         if (presionado.getName().equals("basura")) {
-            arrastra = true;
-            desdeX = e.getX();
-            desdeY = e.getY();
-            window.panelMinijuego.repaint();
+            presionado.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (arrastra) {
-            JLabel arrastrado = (JLabel) e.getSource();
-            // Mover la imagen a la nueva ubicación en función del desplazamiento del mouse
-            arrastrado.setLocation(arrastrado.getX() + e.getX() - desdeX, arrastrado.getY() + e.getY() - desdeY);
-            arrastra = false;
+        JLabel soltado = (JLabel) e.getSource();
+        if (soltado.getName().equals("basura")) {
+            soltado.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             
-             // Obtener los límites del área de "basura"
+            // Obtener los límites del área de "basura"
             Rectangle basura = window.basura.getBounds();
             // Obtener la ubicación actual del JLabel
             Point banana = imagen.getLocation();
             
             // Verificar si el JLabel arrastrado se soltó dentro del área de "basura"
             if (basura.contains(banana)){
-                agregarImagen();
+                aparecerImagen();
             }
             window.panelMinijuego.repaint();
         }
@@ -117,13 +118,27 @@ public class OyenteMinijuego implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (e.getSource() == imagen) {
-            imagen.setCursor(handCursor);
-        }
+        imagen.setCursor(handCursor);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {    
+        JLabel arrastrado = (JLabel) e.getSource();
+        if (arrastrado.getName().equals("basura")) {
+            // Obtener la posición actual del JLabel
+            int x = arrastrado.getLocation().x + e.getX() - arrastrado.getWidth() / 2;
+            int y = arrastrado.getLocation().y + e.getY() - arrastrado.getHeight() / 2;
+            arrastrado.setLocation(x, y);
+        }
+            
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
     }
 
 
