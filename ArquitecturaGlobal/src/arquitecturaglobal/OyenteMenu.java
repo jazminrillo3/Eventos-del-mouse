@@ -118,8 +118,11 @@ class OyenteMenu implements MouseListener{
                 window.panelInstrucciones.setVisible(true);
                 window.panelMinijuego.setVisible(true);
                 
-                OyenteMinijuego oyenteMinijuego = new OyenteMinijuego(window);
-                oyenteMinijuego.getImagen().addMouseListener(oyenteMinijuego);
+                if (oyenteMinijuego != null) {
+                    window.panelMinijuego.remove(oyenteMinijuego.getImagen());
+                }
+                
+                oyenteMinijuego = new OyenteMinijuego(window);
                 break;
         }
     }
