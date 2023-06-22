@@ -12,10 +12,12 @@ import javax.swing.JLabel;
 
 public class OyenteMinijuego implements MouseListener, MouseMotionListener{
     
-    private Window window;
-    private JLabel imagen;
+    private final Window window;
+    private final JLabel imagen;
     
     private final Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+    private final Cursor moveCursor = new Cursor(Cursor.MOVE_CURSOR);
+    private final Cursor defaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
     private final Icon iconoMosquito = new ImageIcon(getClass().getResource("/iconos/mosquito.png"));
     private final Icon iconoArana = new ImageIcon(getClass().getResource("/iconos/arana.png"));
     private final Icon iconoBanana = new ImageIcon(getClass().getResource("/iconos/banana.png"));
@@ -25,7 +27,6 @@ public class OyenteMinijuego implements MouseListener, MouseMotionListener{
         this.window = window;
         
         imagen = new JLabel();
-        window.panelMinijuego.repaint();
         
         imagen.addMouseListener(this);
         imagen.addMouseMotionListener(this);
@@ -93,7 +94,7 @@ public class OyenteMinijuego implements MouseListener, MouseMotionListener{
     public void mousePressed(MouseEvent e) {
         JLabel presionado = (JLabel) e.getSource();
         if (presionado.getName().equals("basura")) {
-            presionado.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+            presionado.setCursor(moveCursor);
         }
     }
 
@@ -101,7 +102,7 @@ public class OyenteMinijuego implements MouseListener, MouseMotionListener{
     public void mouseReleased(MouseEvent e) {
         JLabel soltado = (JLabel) e.getSource();
         if (soltado.getName().equals("basura")) {
-            soltado.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            soltado.setCursor(defaultCursor);
             
             // Obtener los límites del área de "basura"
             Rectangle basura = window.basura.getBounds();

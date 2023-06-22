@@ -59,7 +59,7 @@ public class Dibujo extends JPanel{
     // Dibuja ovalos en el panel en la ubicaciones especificadas en la ventana
     @Override
     public void paintComponent(Graphics g) {
-//        //Borra el area
+        //Borra el area
         super.paintComponent(g);
         
         //Dibuja todos los puntos
