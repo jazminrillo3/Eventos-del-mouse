@@ -70,7 +70,7 @@ El proyecto consta de las siguientes clases:
 
 ---
 
-## interfaces usadas
+## Interfaces usadas
 
 ### Interfaz MouseListener
 Se usa para recibir eventos de mouse "interesantes" (presionar, soltar, hacer clic, ingresar y salir) en un componente. 
